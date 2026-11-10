@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear Baking Co.</title>
+    <style>
+        :root {
+            --primary-color: #8B5A2B; /* Warm brown */
+            --secondary-color: #F4A460; /* Sandy brown */
+            --background-color: #FFF8DC; /* Cornsilk / Cream */
+            --text-color: #332211;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation Tabs */
+        nav {
+            background-color: #704214;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #e0d0c0;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--white);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .tab-btn.active {
+            color: var(--white);
+            background-color: var(--secondary-color);
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Specific Tab Styles */
+        #about p {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #buy {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #888;
+            padding: 5rem 2rem;
+        }
+
+        /* Meet the Makers Grid Layout */
+        .grade-section {
+            margin-bottom: 3rem;
+        }
+
+        .grade-section h3 {
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .makers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .maker-card {
+            background: var(--background-color);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Styled image rules to keep all pictures uniform */
+        .maker-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background-color: #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        /* Shown instead of a photo if the link is missing or not shared */
+        .photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .maker-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-wrap: wrap;
+            }
+            .tab-btn {
+                flex: 1 1 50%;
+                text-align: center;
+                padding: 0.75rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bear Baking Co.</h1>
+        <p>An elective of THS</p>
+    </header>
+
+    <nav>
+        <button class="tab-btn active" onclick="openTab(event, 'about')">About</button>
+        <button class="tab-btn" onclick="openTab(event, 'buy')">Buy</button>
+        <button class="tab-btn" onclick="openTab(event, 'makers')">Meet the Makers</button>
+        <button class="tab-btn" onclick="openTab(event, 'instructions')">Instructions</button>
+    </nav>
+
+    <div class="container">
+
+        <!-- ABOUT TAB -->
+        <div id="about" class="tab-content active">
+            <p>Welcome! We are Bear Baking Co., an elective of THS. Our goal this year is to raise money for new amps for our band, pop-up tents for the school, and a heated cat bed for the school cat, Ben. We plan to raise this money by selling cookie kits, which you can order in the Buy tab above. We have put a lot of time, effort, and planning into this, so we hope you can support us. Thanks!</p>
+        </div>
+
+        <!-- BUY TAB -->
+        <div id="buy" class="tab-content">
+            Coming Soon
+        </div>
+
+        <!-- MEET THE MAKERS TAB -->
+        <!--
+            HOW TO ADD PHOTOS:
+            In Google Drive, right-click the photo > Share > Copy link.
+            Paste the whole link between the quotes after data-drive="..."
+            Example: data-drive="https://drive.google.com/file/d/1AbCdEf.../view?usp=sharing"
+            The page turns it into a working image automatically.
+        -->
+        <div id="makers" class="tab-content">
+
+            <!-- 6th Grade -->
+            <div class="grade-section">
+                <h3>6th Grade Chefs</h3>
+                <div class="makers-grid">
+                    <div class="maker-card">
+                        <img data-drive="https://drive.google.com/file/d/1NMwumVQyDPARfpSh6E5qrabpHXY_h2od/view?usp=sharing" alt="Allie Curtis" class="maker-photo">
+                        <h4>Allie Curtis</h4>
+                    </div>
+                    <div class="maker-card">
+                        <img data-drive="https://drive.google.com/file/d/1NMwumVQyDPARfpSh6E5qrabpHXY_h2od/view?usp=sharing" alt="Helen Pheatt" class="maker-photo">
+                        <h4>Helen Pheatt</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7th Grade -->
+            <div class="grade-section">
+                <h3>7th Grade Chefs</h3>
+                <div class="makers-grid">
+                    <div class="maker-card">
+                        <img data-drive="https://drive.google.com/file/d/1vWkuvwzrLJKUeT6fCxwu034OIEBfDXOj/view?usp=sharing" alt="Sal Prystowsky" class="maker-photo">
+                        <h4>Sal Prystowsky</h4>
+                    </div>
+                    <div class="maker-card">
+                        <img data-drive="PASTE_LINK_HERE" alt="Grayson Schooley" class="maker-photo">
+                        <h4>Grayson Schooley</h4>
+                    </div>
+                    <div class="maker-card">
+                        <img data-drive="https://drive.google.com/file/d/1XlRfV_zmrd00AgRZjD1t9_BVlzl6QMtu/view?usp=sharing" alt="Payton Henson" class="maker-photo">
+                        <h4>Payton Henson</h4>
+                    </div>
+                    <div class="maker-card">
+                        <img data-drive="https://drive.google.com/file/d/1xCNTJym9isdIOZ7z4oGYkApUCIIWUBFM/view?usp=sharing" alt="Caroline LeComte" class="maker-photo">
+                        <h4>Caroline LeComte</h4>
+                    </div>
+                    <div class="maker-card">
+                        <img data-drive="https://drive.google.com/file/d/1a8Z95HXu9EUMihjLUdK2syg1rKifLL2i/view?usp=sharing" alt="Cairo Malik" class="maker-photo">
+                        <h4>Cairo Malik</h4>
+                    </div>
+                    <div class="maker-card">
+                        <img data-drive="PASTE_LINK_HERE" alt="Tim Welty" class="maker-photo">
+                        <h4>Tim Welty</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8th Grade -->
+            <div class="grade-section">
+                <h3>8th Grade Chefs</h3>
+              
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Switches between tabs
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            var tab = document.getElementById(tabName);
+            if (tab) {
+                tab.style.display = "block";
+                tab.classList.add("active");
+            }
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Turns a Google Drive share link into an image address that works in a web page
+        function driveImageUrl(link) {
+            var match = link.match(/\/d\/([\w-]{20,})/) || link.match(/[?&]id=([\w-]{20,})/);
+            return match ? "https://drive.google.com/thumbnail?id=" + match[1] + "&sz=w800" : null;
+        }
+
+        // If a photo can't load, show the person's initials instead of a broken image
+        function showInitials(img) {
+            var initials = img.alt.split(" ").map(function (w) { return w.charAt(0); }).join("");
+            var box = document.createElement("div");
+            box.className = "maker-photo photo-placeholder";
+            box.textContent = initials;
+            img.replaceWith(box);
+        }
+
+        document.querySelectorAll("img[data-drive]").forEach(function (img) {
+            var url = driveImageUrl(img.getAttribute("data-drive"));
+            if (url) {
+                img.onerror = function () { showInitials(img); };
+                img.src = url;
+            } else {
+                showInitials(img);
+            }
+        });
+    </script>
+</body>
+</html>
